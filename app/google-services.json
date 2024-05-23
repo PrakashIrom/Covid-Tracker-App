@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900026394246",
+    "project_id": "covid-register-bf542",
+    "storage_bucket": "covid-register-bf542.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900026394246:android:3da42286c986a7be051307",
+        "android_client_info": {
+          "package_name": "com.example.covid19tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC93_2fM69KO2sblr397noWht4nbmHMrTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
