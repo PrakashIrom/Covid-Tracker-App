@@ -1,19 +1,24 @@
 package com.example.covid19tracker.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.covid19tracker.R
@@ -55,8 +60,24 @@ fun Error(modifier: Modifier  = Modifier){
 @Composable
 fun Success(modifier: Modifier = Modifier,data: List<Data>){
     Scaffold (topBar = {
-        TopAppBar(title = { Text("Covid Tracker",
-            textAlign = TextAlign.Center    ) })
+        TopAppBar(title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    "Covid Tracker"
+                )
+                Spacer(modifier = Modifier.size(8.dp))
+                Icon(
+                    painter = painterResource(R.drawable.covid),
+                    contentDescription = "Corona Icon",
+                    modifier = Modifier.size(30.dp),
+                    tint = Color.Unspecified
+                )
+            }
+        }
+        )
     }){innerPadding->
         Covid(modifier.padding(innerPadding),data)
     }

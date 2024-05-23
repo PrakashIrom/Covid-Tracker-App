@@ -7,10 +7,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -21,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.covid19tracker.home.CovidViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(modifier: Modifier = Modifier, navController: NavHostController, viewModel: CovidViewModel = viewModel()) {
 
@@ -43,20 +47,35 @@ fun SignUpScreen(modifier: Modifier = Modifier, navController: NavHostController
             value = email,
             onValueChange = { viewModel.email.value = it },
             label = { Text("Email") },
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextField(
             value = password,
             onValueChange = { viewModel.password.value = it },
             label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation()
+            visualTransformation = PasswordVisualTransformation(),
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextField(
             value = confirmPassword,
             onValueChange = { viewModel.confirmPassword.value = it },
             label = { Text("Confirm Password") },
-            visualTransformation = PasswordVisualTransformation()
+            visualTransformation = PasswordVisualTransformation(),
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {

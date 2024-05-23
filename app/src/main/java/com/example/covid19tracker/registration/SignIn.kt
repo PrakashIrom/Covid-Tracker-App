@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,7 @@ import androidx.navigation.NavHostController
 import com.example.covid19tracker.home.CovidViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController, viewModel: CovidViewModel = viewModel()) {
 
@@ -41,7 +43,14 @@ fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController
         TextField(
             value = email,
             onValueChange = { viewModel.email.value = it },
-            label = { Text("Email") }
+            label = { Text("Email")
+            },
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent, // Remove focused underline
+                unfocusedIndicatorColor = Color.Transparent // Remove unfocused underline
+            )
+
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextField(
@@ -49,6 +58,11 @@ fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController
             onValueChange = { viewModel.password.value = it },
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
+            shape = RoundedCornerShape(20.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent, // Remove focused underline
+                unfocusedIndicatorColor = Color.Transparent // Remove unfocused underline
+            )
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {  viewModel.login(navController) }) {
