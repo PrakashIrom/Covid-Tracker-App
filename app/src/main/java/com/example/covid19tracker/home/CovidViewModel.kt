@@ -1,11 +1,9 @@
 package com.example.covid19tracker.home
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import com.example.covid19tracker.api.APIService
 import com.example.covid19tracker.api.CovidApi
 import com.example.covid19tracker.model.Data
 import com.google.firebase.auth.FirebaseAuth

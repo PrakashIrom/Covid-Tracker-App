@@ -9,8 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 
@@ -22,8 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavHostController
 import com.example.covid19tracker.home.CovidViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
