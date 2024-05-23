@@ -21,15 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavHostController
+import com.example.covid19tracker.home.CovidViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var showErrorDialog by remember { mutableStateOf(false) }
+fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController, viewModel: CovidViewModel = viewModel()) {
+
+    val email by viewModel.email
+    var password by viewModel.password
+    var showErrorDialog by viewModel.showErrorDialog
 
     Column(
         modifier = Modifier
@@ -42,30 +44,18 @@ fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController
         Spacer(modifier = Modifier.height(16.dp))
         TextField(
             value = email,
-            onValueChange = { email = it },
+            onValueChange = { viewModel.email.value = it },
             label = { Text("Email") }
         )
         Spacer(modifier = Modifier.height(8.dp))
         TextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = { viewModel.password.value = it },
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {   if (email.isEmpty() || password.isEmpty()) {
-            showErrorDialog = true
-            return@Button
-        }
-            val auth: FirebaseAuth = com.google.firebase.Firebase.auth
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        navController.navigate("home")
-                    } else {
-                        showErrorDialog = true
-                    }
-                } }) {
+        Button(onClick = {  viewModel.login(navController) }) {
             Text("Sign In")
         }
         Spacer(modifier = Modifier.height(16.dp))
