@@ -79,7 +79,7 @@ fun SignUpScreen(modifier: Modifier = Modifier, navController: NavHostController
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            viewModel.createAccount(navController)
+            viewModel.createAccount()
         }) {
             Text("Sign Up")
         }
@@ -88,7 +88,7 @@ fun SignUpScreen(modifier: Modifier = Modifier, navController: NavHostController
             AlertDialog(
                 onDismissRequest = { viewModel.showErrorDialog.value = false },
                 title = { Text("Error") },
-                text = { Text("Passwords do not match or do not meet the credential criteria!") },
+                text = { Text(viewModel.showErrorMessage.value) },
                 confirmButton = {
                     Button(
                         onClick = { viewModel.showErrorDialog.value = false }

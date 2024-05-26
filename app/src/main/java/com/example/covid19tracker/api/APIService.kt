@@ -34,12 +34,12 @@ interface APIService {
 
     @GET("reports")
     suspend fun getReports(
-        @Query("city_name") cityName: String = "Autauga",
-        @Query("region_province") regionProvince: String = "Alabama",
-        @Query("iso") iso: String = "USA",
-        @Query("region_name") regionName: String = "US",
-        @Query("q") q: String = "US Alabama",
-        @Query("date") date: String = "2020-04-16"
+        @Query("city_name") cityName: String = "Mumbai",
+        @Query("region_province") regionProvince: String = "Maharashtra",
+        @Query("iso") iso: String = "India",
+        @Query("region_name") regionName: String = "IND",
+        @Query("q") q: String = "India Mumbai",
+        @Query("date") date: String = "2020-04-16" //filter out the fetched datas
     ): ApiResponse
 }
 
@@ -47,5 +47,6 @@ object CovidApi{
     val retrofitService: APIService by lazy {
         retrofit.create(APIService::class.java)//::class.java syntax is used to obtain the Java
         // Class object corresponding to a Kotlin class or type.
+        //ensure that the Kotlin class is appropriately converted to the type expected by the Java-based Retrofit library
     }
 }

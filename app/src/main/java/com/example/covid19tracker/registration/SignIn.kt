@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -47,8 +46,8 @@ fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController
             },
             shape = RoundedCornerShape(20.dp),
             colors = TextFieldDefaults.textFieldColors(
-                focusedIndicatorColor = Color.Transparent, // Remove focused underline
-                unfocusedIndicatorColor = Color.Transparent // Remove unfocused underline
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
             )
 
         )
@@ -84,7 +83,6 @@ fun SignInScreen(modifier: Modifier = Modifier, navController: NavHostController
                 }
             )
         }
-
         Text(
             text = "Don't have an account?",
             color = Color.Gray,
